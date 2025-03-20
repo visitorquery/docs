@@ -11,10 +11,6 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "API Reference",
-        "openapi": "https://visitorquery.com/api/schema"
-      },
-      {
         "tab": "Guides",
         "groups": [
           {

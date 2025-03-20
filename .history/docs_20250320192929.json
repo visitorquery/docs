@@ -12,7 +12,27 @@
     "tabs": [
       {
         "tab": "API Reference",
-        "openapi": "https://visitorquery.com/api/schema"
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "development"
+            ]
+          },
+          {
+            "group": "Essentials",
+            "pages": [
+              "essentials/markdown",
+              "essentials/code",
+              "essentials/images",
+              "essentials/settings",
+              "essentials/navigation",
+              "essentials/reusable-snippets"
+            ]
+          }
+        ]
       },
       {
         "tab": "Guides",

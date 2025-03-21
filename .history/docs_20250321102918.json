@@ -4,7 +4,7 @@
 	"name": "VisitorQuery docs",
 	"colors": {
 		"primary": "#19191C",
-		"light": "#FFF",
+		"light": "#19191C",
 		"dark": "#19191C"
 	},
 	"favicon": "/favicon.svg",
@@ -47,16 +47,6 @@
 		"global": {
 			"anchors": [
 				{
-					"anchor": "Homepage",
-					"href": "https://visitorquery.com/",
-					"icon": "house"
-				},
-				{
-					"anchor": "Pricing",
-					"href": "https://visitorquery.com/pricing",
-					"icon": "table-list"
-				},
-				{
 					"anchor": "Support",
 					"href": "https://visitorquery.com/support",
 					"icon": "slack"
@@ -70,7 +60,10 @@
 	},
 	"navbar": {
 		"links": [
-			
+			{
+				"label": "Support",
+				"href": "https://visitorquery.com/support"
+			}
 		],
 		"primary": {
 			"type": "button",

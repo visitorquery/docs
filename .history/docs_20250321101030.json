@@ -3,9 +3,9 @@
 	"theme": "mint",
 	"name": "VisitorQuery docs",
 	"colors": {
-		"primary": "#19191C",
-		"light": "#FFF",
-		"dark": "#19191C"
+		"primary": "#16A34A",
+		"light": "#07C983",
+		"dark": "#15803D"
 	},
 	"favicon": "/favicon.svg",
 	"navigation": {
@@ -36,26 +36,10 @@
 			{
 				"tab": "API Reference",
 				"openapi": "https://visitorquery.com/api/schema"
-			},
-			{
-				"tab": "Integrations",
-				"pages": [
-					"integrations/introduction"
-				]
 			}
 		],
 		"global": {
 			"anchors": [
-				{
-					"anchor": "Homepage",
-					"href": "https://visitorquery.com/",
-					"icon": "house"
-				},
-				{
-					"anchor": "Pricing",
-					"href": "https://visitorquery.com/pricing",
-					"icon": "table-list"
-				},
 				{
 					"anchor": "Support",
 					"href": "https://visitorquery.com/support",
@@ -66,11 +50,14 @@
 	},
 	"logo": {
 		"light": "/images/logo.svg",
-		"dark": "/images/logo-dark.svg"
+		"dark": "/images/logo.svg"
 	},
 	"navbar": {
 		"links": [
-			
+			{
+				"label": "Support",
+				"href": "https://visitorquery.com/support"
+			}
 		],
 		"primary": {
 			"type": "button",

@@ -1,0 +1,38 @@
+---
+title: 'Guide'
+description: 'Learn how to install the client side code on your website'
+---
+
+To install the script you need a project so make sure you have created one. 
+If you haven't, you can create one [here](https://visitorquery.com/dashboard/projects).
+
+Once you have your project, click on the `Settings icon -> Setup instructions` and add the domain name where you wish to install the script.
+
+Copy the `Public API key` form that window and paste it in the script below by replacing `<project-public-api-key>` with it.
+
+```html
+<script src="https://cdn.visitorquery.com/visitorquery.js"></script>
+<script type="text/javascript">
+	window.addEventListener('load', () => {
+		window.VisitorQuery.run({
+			ApiKey   : "<project-public-api-key>",
+			SessionId: "session-id-of-the-user"
+		});
+	});
+</script>
+```
+
+Keep in mind that, for security reasons, a Public API key will only work when the request originates from the domain that you have added in the project settings.
+
+## The session id
+
+We recommend using a unique session id for each user session. This can be a random string or a unique identifier that you generate.
+The session should not be long lived, this is not something like a cookie that you store for a long time. 
+It should change if the user closes the tab/window.
+Failing to do so could lead to a lot of fals positives when checking the session data due to pollution from other sessions of the same user.
+
+## Install complete
+
+Once you have installed the script, you can create a pageview on your website and the results should start showing in the project's page in the dashboard.
+To programatically check a user's session data, use our REST APIs. You can find the documentation [here](/api-reference/introduction).
+```

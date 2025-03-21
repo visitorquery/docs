@@ -70,7 +70,10 @@
 	},
 	"navbar": {
 		"links": [
-			
+			{
+				"label": "Support",
+				"href": "https://visitorquery.com/support"
+			}
 		],
 		"primary": {
 			"type": "button",

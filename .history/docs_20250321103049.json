@@ -52,11 +52,6 @@
 					"icon": "house"
 				},
 				{
-					"anchor": "Pricing",
-					"href": "https://visitorquery.com/pricing",
-					"icon": "table-list"
-				},
-				{
 					"anchor": "Support",
 					"href": "https://visitorquery.com/support",
 					"icon": "slack"
@@ -70,7 +65,10 @@
 	},
 	"navbar": {
 		"links": [
-			
+			{
+				"label": "Support",
+				"href": "https://visitorquery.com/support"
+			}
 		],
 		"primary": {
 			"type": "button",

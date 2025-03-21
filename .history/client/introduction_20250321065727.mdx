@@ -1,0 +1,26 @@
+---
+title: 'Client script install guide'
+description: 'Learn how to install the client side code on your website'
+---
+
+To install the script you need a project so make sure you have created one. 
+If you haven't, you can create one [here](https://visitorquery.com/dashboard/projects).
+
+Once you have your project, click on the `Settings icon -> Setup instructions` and add the domain name where you wish to install the script.
+
+Copy the `Public API key` form that window and paste it in the script below by replacing `<project-public-api-key>` with it.
+
+```html
+<script src="https://cdn.visitorquery.com/visitorquery.js"></script>
+<script type="text/javascript">
+	window.addEventListener('load', () => {
+		window.VisitorQuery.run({
+			ApiKey   : "<project-public-api-key>",
+			Endpoint : "main.check.visitorquery.com", // optional
+			SessionId: "session-id-of-the-user"
+		});
+	});
+</script>
+```
+
+## The session id

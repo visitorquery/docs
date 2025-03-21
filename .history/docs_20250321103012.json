@@ -49,12 +49,7 @@
 				{
 					"anchor": "Homepage",
 					"href": "https://visitorquery.com/",
-					"icon": "house"
-				},
-				{
-					"anchor": "Pricing",
-					"href": "https://visitorquery.com/pricing",
-					"icon": "table-list"
+					"icon": "home"
 				},
 				{
 					"anchor": "Support",
@@ -70,7 +65,10 @@
 	},
 	"navbar": {
 		"links": [
-			
+			{
+				"label": "Support",
+				"href": "https://visitorquery.com/support"
+			}
 		],
 		"primary": {
 			"type": "button",

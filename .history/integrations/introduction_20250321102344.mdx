@@ -1,0 +1,26 @@
+---
+title: Introduction
+description: Example integrations with VisitorQuery
+---
+
+Our APIs and checks are easy to integrate with any platform, especially front facing apps that can inject a small piece of code in order to load our check scripts.
+
+We are actively working on adding more integrations to our services. If you have a specific use case that you would like to see supported, please [let us know](https://visitorquery.com/support).
+
+## Web
+
+For web installs you need to add our official script to the page and run it. Here is an example:
+
+```html
+<script src="https://cdn.visitorquery.com/visitorquery.js"></script>
+<script type="text/javascript">
+	window.addEventListener('load', () => {
+		window.VisitorQuery.run({
+			ApiKey   : "<project-public-api-key>",
+			SessionId: "session-id-of-the-user"
+		});
+	});
+</script>
+```
+
+Our main check endpoint will always be main.check.visitorquery.com but we are adding more in order to provide better latencies. To view the entire list of endpoints and their respective regions please refer to the API docs in the Endpoints section.

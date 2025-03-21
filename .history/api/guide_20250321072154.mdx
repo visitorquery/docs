@@ -1,0 +1,32 @@
+---
+title: 'Guide'
+description: 'Backend API guides and documentation'
+---
+
+<Note>
+	All API requests are secured using Bearer tokens. You can find the token in the dashboard
+</Note>
+
+
+To get the API key, open the dashboard and click on your profile's sidebar menu item in the bottom left corner. Then click on the `Developer API key` tab and copy the key from there.
+
+
+## Authentication
+
+All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+
+```json
+"security": [
+	{
+		"bearerAuth": []
+	}
+]
+```
+
+## API endpoints
+
+All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+
+All our available endpoints are documented in the [API reference page](/api-reference/checks/get-check-session-results).
+
+If you wish to load it into an OpenAPI compatible client, you can also find the schema file [here](https://visitorquery.com/api/schema).

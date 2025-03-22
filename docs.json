@@ -28,7 +28,7 @@
 					{
 						"group": "API",
 						"pages": [
-							"api/guide"
+							"backend-api/guide"
 						]
 					}
 				]

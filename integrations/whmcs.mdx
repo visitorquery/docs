@@ -13,7 +13,7 @@ Since 99% of fraudsters use proxies or IP masking tools, our service is a must-h
 
 ## How does it work?
 
-Once installed, out plugin will place a small script on your WHMCS pages. When the client loads the page, the script will send a request to our servers with the client's session ID.
+Once installed, our plugin will place a small script on your WHMCS pages. When the client loads the page, the script will send a request to our servers with the client's session ID.
 That request is analysed and, if a proxy or VPN is detected, the client will be unable to use certain payment gateways that you have configured.
 
 ### Why not just ban the user?
@@ -32,8 +32,7 @@ We have clients that allow users to pay with crypto or other methods that are no
 
 These are the settings we currently support for your plugin:
 
-- **Project Public API KEY**: This is the public API key that you can find in your project settings.
-- **Project Private API KEY**: This is the private API key that you can find in your project settings.
+- **Project Id**: This is the project ID that you can find in your project's page (dashboard).
 - **Developer API KEY**: This is the API key that you can find in your profile settings.
 - **Minimum Confidence**: This is the minimum confidence level that triggers a block. If the check marks a session as a proxy with a confidence level below this, the user will be allowed to proceed unrestricted.
 - **Show Warning Message**: If enabled, a warning message will be shown to the user if they are detected as a proxy user.

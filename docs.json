@@ -43,6 +43,7 @@
 					"integrations/introduction",
 					"integrations/web",
 					"integrations/react",
+					"integrations/astrojs",
 					"integrations/whmcs"
 				]
 			}

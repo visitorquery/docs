@@ -1,0 +1,31 @@
+---
+title: AstroJs
+description: AstroJs integration for VisitorQuery
+---
+
+For astroJs we recommend using the web integration by placing the code somewhere in the layout, before the closing `</body>` tag. Here is an example:
+
+```typescript layout.astro
+---
+// Frontmatter:
+// provide a session id so we can track the user during this session 
+// and also to allow us to check the results later on when needed
+const {sessionId} = Astro.request.cookies.get("visitorquery_session_id") || "session-id-of-the-user";
+---
+
+<!-- rest of the layout code -->
+
+<script is:inline src="https://cdn.visitorquery.com/visitorquery.js"></script>
+<script is:inline>
+	document.addEventListener("astro:page-load", () => {
+		window.VisitorQuery.run({
+			ApiKey   : "your-public-api-key",
+			SessionId: sessionId
+		});
+	});
+</script>
+```
+
+The main takeaway here is that you need to use the `astro:page-load` event to run the script. 
+This will ensure that the script runs after the page has loaded and triggers a check after each page load.
+If you don't need page views and you want to run the script only once, you can use the `window.onload` event instead.

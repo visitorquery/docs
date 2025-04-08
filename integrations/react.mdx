@@ -29,8 +29,43 @@ export default function Page() {
 }
 ```
 
-Simply by adding the provider, visitorquery will perform a check on each page load.
+Simply by adding the provider, visitorquery will perform a check.
 
+### How to create page views
+
+Since navigation in modern SPAs is often done without a full page reload, adding pageviews can be tricky. Our provider uses `useEffect` internally and re-runs when the parameters change.
+In this case you can utilize the `trigger` param to trigger a pageview when your route changes like in the following NextJS example:
+
+```tsx
+import {usePathname} from "next/navigation";
+
+...
+
+export default function Layout({children}) {
+	const currPathname = usePathname();
+
+	const visitorParams: VisitorQueryProviderProps = {
+		apiKey   : process.env.NEXT_PUBLIC_VISITOR_QUERY_API_KEY as string,
+		sessionId: getSetVisitorId(true),
+		endpoint : process.env.NEXT_PUBLIC_VISITOR_QUERY_ENDPOINT as string || undefined,
+	};
+
+	const [pathname, setPathname] = React.useState(currPathname);
+
+	useEffect(() => {
+		if (pathname != currPathname) {
+			setPathname(currPathname);
+		}
+	}, [currPathname]);
+
+	return (
+        // notice the `trigger` prop being passed
+		<VisitorQueryProvider {...visitorParams} trigger={pathname}>
+            {children}
+        </VisitorQueryProvider>
+	);
+}
+```
 If you need details regarding the state of the check (started, ended, loading), in order to show/hide certain ui elements, use the provided hook:
 
 ```tsx

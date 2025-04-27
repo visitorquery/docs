@@ -4,7 +4,7 @@
 	"name": "VisitorQuery docs",
 	"colors": {
 		"primary": "#19191C",
-		"light": "#FFF",
+		"light": "#000000",
 		"dark": "#19191C"
 	},
 	"favicon": "/favicon.svg",
@@ -22,7 +22,8 @@
 					{
 						"group": "Client install",
 						"pages": [
-							"client/guide"
+							"client/javascript",
+							"client/no-javascript"
 						]
 					},
 					{

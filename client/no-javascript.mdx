@@ -1,0 +1,99 @@
+---
+title: 'No Javascript'
+description: 'Simpler, faster but less accurate way to check if a connection is behind a proxy'
+---
+
+The simple variant of deciding wether a connection hides behind a proxy is also available.
+It is generally faster but lacks certain checks that the full version has.
+Due to this, it will not be as efficient as the full/javascript-based version.
+Since it doesn't rely on javascript, it can be used anywhere (still needs to be fored from the client's machine).
+
+```bash
+curl https://<unique_rand_string>.main.check.visitorquery.com/d?key=project_private_api_key&bsid=session_id&short=true
+```
+
+Keep in mind that `project_private_api_key` was used here since you may be firing the call from environments that do not pass the referer.
+
+If your call is being fired from the browser and from the domain associated with your project, you can use the `project_public_api_key` instead.
+
+The `<unique_rand_string>` should be replaced with a unique string. You can use a uuid or any other unique identifier that you can generate.
+This is done so that the underlying platform of browser that you use does not cache the requests.
+
+The `session_id` should be unique per call/project in this case. You can use a uuid or any other unique identifier that you can generate.
+
+The `short` parameter tells the check engine that this is a short run, we are not expecting more data to flow and that we should perform the checks as fast as possible.
+
+### Sample response
+
+```json
+{
+    "tka":"ba568faa-2365-11f0-a9a8-50ebf62f3aac"
+}
+```
+
+This `tka` field is the unique identifier of the check being performed. It is needed in the advanced section, should you want to pursue that route.
+
+## The check result
+
+It is advised to wait for one or two seconds before fetching the result so we can run all our checks against the connection data.
+
+You can check the result using the same API described at our 
+[API docs](https://docs.visitorquery.com/api-reference/detect/get-check-session-results).
+
+# Advanced usage (optional)
+
+Connections are complicated and sometimes the data is polluted or affected by external factors such as:
+network congestion, packet loss, routing issues etc.
+
+If you open the developer tools when using the Javascript version you will see that we fire some requests multiple times.
+This is helpful for us because we can "stabilise" the data and eliminate high deviations 
+before analysing it as opposed to a one-off request that might be affected by the factors mentioned above.
+
+At this point, the following is purely optional but recommended. 
+We have no idea of your conditions but, if they allow it, we recommend firing some additional requests (at least 2-3 more) after the initial one.
+
+Since we want to stabilise the same check and avoid creating other checks, we will use the `tka` value that we got from the first request. 
+
+```bash
+# generate `unique_rand_string`
+curl https://<unique_rand_string>_<tka>.main.check.visitorquery.com/d?tka=<tka>
+
+# generate `unique_rand_string`
+curl https://<unique_rand_string>_<tka>.main.check.visitorquery.com/d?tka=<tka>
+
+# generate `unique_rand_string`
+curl https://<unique_rand_string>_<tka>.main.check.visitorquery.com/d?tka=<tka>
+```
+
+The `<unique_rand_string>` should be replaced with a unique string. Yes, different from the one used in the first request and yes, different for each request.
+
+Keep note of the `<tka>` value being used in two places here. Since one of the tests we perform is a DNS leak test, we need the `tka` in the subdomain as well.
+If you omit it from the subdomain part, the DNS leak test will not be performed.
+Since the `unique_rand_string` and `tka` are separated by an underscore, make sure that your generated `unique_rand_string` does not contain any underscores.
+
+### How unique should the `unique_rand_string` be?
+
+Don't worry too much about this. Just make it so that it is unique enough within an hour or so, enough for DNS resolbvers to discard it from their cache.
+
+## Full bash example for the advanced usage
+
+```bash
+
+#!/bin/bash
+
+bsid="$(uuidgen)"
+unique_rand_string="$(uuidgen)"
+private_api_key="project_private_api_key"
+tka=$(curl -s "https://${unique_rand_string}.main.check.visitorquery.com/d?key=${private_api_key}&bsid=${bsid}&short=true" | jq -r ".tka")
+
+echo "tka: ${tka}"
+
+for i in {1..3}
+do
+    unique_rand_string="$(uuidgen)"
+    curl -s "https://${unique_rand_string}_${tka}.main.check.visitorquery.com/d?tka=${tka}"
+done
+```
+
+You can check the result using the same API described at our 
+[API docs](https://docs.visitorquery.com/api-reference/detect/get-check-session-results).

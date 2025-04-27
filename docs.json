@@ -4,7 +4,7 @@
 	"name": "VisitorQuery docs",
 	"colors": {
 		"primary": "#19191C",
-		"light": "#000000",
+		"light": "#cccccc",
 		"dark": "#19191C"
 	},
 	"favicon": "/favicon.svg",
